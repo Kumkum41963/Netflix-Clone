@@ -1,6 +1,100 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    /*  */
+    /* it implies total height == content + padding + border */
     box-sizing: border-box;
 }
+
+body{
+    background-color: black;
+}
+
+/* MARGIN COLLAPSE : When two margins come to a fight the one with maximum value wins the battle */
+
+
+/* SIZES */
+
+/* margin : auto :: gives margin from left-right i.e centers it (but only for block level elements arthath for dabba elements) */
+
+/* [vh,vw] more commonly to use for height and width becasue ye user ke system ke acc. cheeze set krti h */
+
+/* [em] sets the font-size==value set*inherited value from default i.e font-size==2em  */
+
+/* [rem] sets font-size==value*root inherited value i.e font-size==2rem
+Root :: this is the value inherited set by us */
+
+/* v-min (vw,vh) (mobile:width , desktop:height) */
+
+/* v-max (vh,vw) (mobile:height , desktop:width) */
+
+
+/* This box holds bg */
+.main-bg-image {
+    /* url() :: Includes external resources like images, fonts, or stylesheets within your CSS styles.*/
+    background-image: url(Assets/Images/bg.jpg);
+    background-size: cover;
+    background-size: max(1200px,100vw);
+    background-position: center center;
+    /* image ke scale hone pe repeat na ho mane jo kam bada krne pe glitch aara tha usse bachayegi ye  */
+    background-repeat: no-repeat;
+    height: 90vh;
+    /* element to take up the full width of the viewport, regardless of the size of its container. This is useful for creating full-screen layouts. */
+    width: 100vw;
+    /* relative : wrt it's actual(static) position we can shift the element however we suppose so */
+    /* ab yaha ye default pos. ke acc set h */
+    position: relative;
+}
+
+
+/* POSITION */
+
+/*relative mien we move relative to static position (shuru mien default jo li thi usne) */
+
+/* absolute mien hum nearest(just upar ki class) positioned(jis class,id ko position vali prop. di huoi ho) uske relative move krte h */
+
+/* position:fixed :: element ki jagah vahi rehti h and any movement(scroll) has no impact whatsoever hume ye humesha vahi dikhegi */
+
+/* position:sticky :: element ki jagah vahi rehti h and any movement(scroll) has no impact whatsoever hume ye humesha vahi dikhegi,they also need to be defined (defined with relative)*/
+
+/* fixed VS sticky :: scroll ke vabhjot bhi it stays there but sticky mien ek certain pt pe hi it sticks  */
+
+/* transform , filter , perspective prop. can also make an element appear as positioned and in this case again posiion would set relative to nearest positioned(transform,filter,perspective,position all contribute) ancestor */
+
+/*by default position is static */
+/* meaning top bottom z-index all can't be used in here */
+
+/* a concept of Z-index arises that shifts to move image along z axis i.e behind or front(aage-piche) 
+AND to use it some kind of other prop. of position needs to be used just to remove static */
+
+
+/* to set black opacity over it we need to put a box over it and set it's visibility accordingly */
+.bg-opacity-box {
+    height: 90vh;
+    background-color: black;
+    
+    opacity: 0.44;
+    /* element to fill the width of its parent element (or containing block) and be responsive to changes in that parent's size. */
+    width: 100%;
+    /* nearest positioned(div,main,body,html) ancestor ke relative lag jana */
+    /* we use absolute here because obvio. we want our opacity box to work wrt bg and not the other way around */
+    /* aur yaha ye apne bg box ke relative set h */
+    position: absolute;
+    top: 0;
+}
+
+/* NAVBAR */
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: red;
+    margin: auto;
+    width: 80vw;
+}
+.logo-image {
+    height: 7vh;
+    background-color: rgb(215, 166, 166);
+}
+
+
+/* FLEXBOX */
