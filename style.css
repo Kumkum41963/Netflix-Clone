@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     /* it implies total height == content + padding + border */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
-body{
+body {
     background-color: black;
 }
 
@@ -33,7 +33,7 @@ Root :: this is the value inherited set by us */
     /* url() :: Includes external resources like images, fonts, or stylesheets within your CSS styles.*/
     background-image: url(Assets/Images/bg.jpg);
     background-size: cover;
-    background-size: max(1200px,100vw);
+    background-size: max(1200px, 100vw);
     background-position: center center;
     /* image ke scale hone pe repeat na ho mane jo kam bada krne pe glitch aara tha usse bachayegi ye  */
     background-repeat: no-repeat;
@@ -71,8 +71,7 @@ AND to use it some kind of other prop. of position needs to be used just to remo
 .bg-opacity-box {
     height: 90vh;
     background-color: black;
-    
-    opacity: 0.44;
+    opacity: 0.66;
     /* element to fill the width of its parent element (or containing block) and be responsive to changes in that parent's size. */
     width: 100%;
     /* nearest positioned(div,main,body,html) ancestor ke relative lag jana */
@@ -83,18 +82,114 @@ AND to use it some kind of other prop. of position needs to be used just to remo
 }
 
 /* NAVBAR */
-.navbar{
+.navbar {
+    /* by default aligns items horizontally from left to right */
     display: flex;
     align-items: center;
+    /* pushes the first flex item to the start edge of the container and the last item to the end edge */
     justify-content: space-between;
-    background-color: red;
+    /* it helps center : by dividing equal margin to both right and left */
     margin: auto;
+    height: 50px;
     width: 80vw;
 }
+
 .logo-image {
-    height: 7vh;
-    background-color: rgb(215, 166, 166);
+    height: 33px;
+    position: relative;
+    z-index: 10;
 }
 
+.nav-btn {}
 
+.btn1-language {
+    /* takes bg color of it's parent element */
+    /* but since parent color is nothing hence by default it has taken transparent */
+    background-color: inherit;
+    position: relative;
+    /* to bring them infront :: ubhar kr lana */
+    z-index: 10;
+    border: 1px solid #928383;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 13px;
+    margin: 0 10px 0 0;
+}
+
+.btn2-signIn {
+    background-color: red;
+    position: relative;
+    z-index: 10;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 13px;
+    margin: 0 0 0 10px;
+}
+
+.btn2-signIn :hover {
+    background-color: rgb(64, 18, 18);
+}
+
+.main-content-box {
+    color: white;
+    /* since parents height is set hence we could use % */
+    /* but don't want it to overflow over the main head */
+    height: calc(100% - 50px);
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gives spacing btw the contents of child of parent element */
+    gap: 25px;
+    text-align: center;
+}
+/* instead of this 1,2,3 we could have simply used main-content-box: first-child or nth child(2) */
+.main-content-1 {
+    font-weight: 900;
+    font-size: 48px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.main-content-2 {
+    font-weight: 900;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.main-content-3 {
+    font-weight: 900;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.main-content-button{
+
+}
+
+.email{
+    background-color: inherit;
+    color: white;
+    font-size: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.get-started{
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.line{
+    background-color: gray;
+    width: 100vw;
+    height: 10px;
+}
 /* FLEXBOX */
+/* applied on parent element of the item */
