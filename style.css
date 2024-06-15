@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     /* it implies total height == content + padding + border */
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
 body {
@@ -90,7 +90,7 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     justify-content: space-between;
     /* it helps center : by dividing equal margin to both right and left */
     margin: auto;
-    height: 50px;
+    height: 60px;
     width: 80vw;
 }
 
@@ -100,7 +100,6 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     z-index: 10;
 }
 
-.nav-btn {}
 
 .btn1-language {
     /* takes bg color of it's parent element */
@@ -134,7 +133,7 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     color: white;
     /* since parents height is set hence we could use % */
     /* but don't want it to overflow over the main head */
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
     position: relative;
     z-index: 10;
     display: flex;
@@ -145,12 +144,12 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     gap: 25px;
     text-align: center;
 }
+
 /* instead of this 1,2,3 we could have simply used main-content-box: first-child or nth child(2) */
 .main-content-1 {
     font-weight: 900;
     font-size: 48px;
     font-family: 'Courier New', Courier, monospace;
-
 }
 
 .main-content-2 {
@@ -165,20 +164,24 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     font-family: 'Courier New', Courier, monospace;
 }
 
-.main-content-button{
-
+.main-content-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.email{
+.email {
     background-color: inherit;
     color: white;
     font-size: 15px;
-    padding: 15px;
+    padding: 15px 135px 15px 20px;
     border-radius: 10px;
     width: 300px;
+    border: 1px solid #fff3f359;
 }
 
-.get-started{
+.get-started {
     background-color: red;
     color: white;
     font-size: 25px;
@@ -186,10 +189,154 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     border-radius: 10px;
 }
 
-.line{
-    background-color: gray;
+.line {
+    background-color: #2a2828;
     width: 100vw;
-    height: 10px;
+    height: 7px;
 }
+
+
+/* SECTION */
+
 /* FLEXBOX */
 /* applied on parent element of the item */
+
+
+
+.first {
+
+    display: flex;
+    /* to center the boxes horizontally*/
+    justify-content: center;
+    /* to center the boxes vertically */
+    align-items: center;
+    /* to center the whole box */
+    margin: auto;
+    max-width: 70vw;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* the parent element to which video is dependent on */
+    position: relative;
+    top: 7px;
+    /* this is because my separation line and this box were overlapping each other */
+    height: 405px;
+}
+
+.sec-image {
+    width: 30vw;
+    position: relative;
+    z-index: 10;
+}
+
+.sec-video {
+    top: 75px;
+    right: 0;
+    /* i want it to be dependent on its parent element */
+    position: absolute;
+    height: 173px;
+    width: 410px;
+}
+
+.first-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sec-text-bold {
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.sec-text-normal {
+    font-size: 15px;
+}
+
+/* CHILD SELECTOR */
+section.third>div :nth-child(2) {
+    height: 146px;
+}
+
+/* FAQBOX */
+.FAQ {
+    margin: 0px 0px 40px 0px;
+
+}
+
+.faq {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 40px auto;
+}
+
+.faqbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.faq-box {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    background-color: #313030;
+    width: 75vw;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 12px 0px 12px;
+    cursor: pointer;
+}
+
+.faq-box:hover {
+    background-color: rgb(83, 81, 81);
+}
+
+
+/* FOOTER */
+footer {
+    /* background-color: #1f1d1d; */
+    width: 100vw;
+    height: 300px;
+
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: large;
+    color: white;
+    max-width: 60vw;
+    margin: auto;
+    gap: 30px;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-item a {
+    margin: 12px 0px;
+    color: white;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.question {
+    color: white;
+    max-width: 60vw;
+    padding: 34px 0px;
+    margin: auto;
+    font-size: 20px;
+}
+
+/* GRID */
+/* How to decide when to use what units */
