@@ -3,9 +3,12 @@
     padding: 0;
     /* it implies total height == content + padding + border */
     box-sizing: border-box;
+    /* used for debugging the horizontal scrollbars */
+    /* outline: 1px solid red; */
 }
 
 body {
+    overflow-x: hidden;
     background-color: black;
 }
 
@@ -32,14 +35,13 @@ Root :: this is the value inherited set by us */
 .main-bg-image {
     /* url() :: Includes external resources like images, fonts, or stylesheets within your CSS styles.*/
     background-image: url(Assets/Images/bg.jpg);
-    background-size: cover;
-    background-size: max(1200px, 100vw);
+    background-size: max(1200px, 100%);
     background-position: center center;
     /* image ke scale hone pe repeat na ho mane jo kam bada krne pe glitch aara tha usse bachayegi ye  */
     background-repeat: no-repeat;
     height: 90vh;
     /* element to take up the full width of the viewport, regardless of the size of its container. This is useful for creating full-screen layouts. */
-    width: 100vw;
+    max-width: 100%;
     /* relative : wrt it's actual(static) position we can shift the element however we suppose so */
     /* ab yaha ye default pos. ke acc set h */
     position: relative;
@@ -69,6 +71,7 @@ AND to use it some kind of other prop. of position needs to be used just to remo
 
 /* to set black opacity over it we need to put a box over it and set it's visibility accordingly */
 .bg-opacity-box {
+    /* max-width: 100%; */
     height: 90vh;
     background-color: black;
     opacity: 0.66;
@@ -91,7 +94,7 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     /* it helps center : by dividing equal margin to both right and left */
     margin: auto;
     height: 60px;
-    width: 80vw;
+    width: 80%;
 }
 
 .logo-image {
@@ -148,20 +151,20 @@ AND to use it some kind of other prop. of position needs to be used just to remo
 /* instead of this 1,2,3 we could have simply used main-content-box: first-child or nth child(2) */
 .main-content-1 {
     font-weight: 900;
-    font-size: 48px;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .main-content-2 {
     font-weight: 900;
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .main-content-3 {
     font-weight: 900;
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .main-content-button {
@@ -193,74 +196,79 @@ AND to use it some kind of other prop. of position needs to be used just to remo
     background-color: #2a2828;
     width: 100vw;
     height: 7px;
+    /* so that during overlap of sections it would still be visible */
+    z-index: 20;
+    max-width: 100%;
 }
 
 
 /* SECTION */
 
-/* FLEXBOX */
-/* applied on parent element of the item */
-
-
-
 .first {
-
+    max-width: 100%;
     display: flex;
     /* to center the boxes horizontally*/
     justify-content: center;
     /* to center the boxes vertically */
     align-items: center;
     /* to center the whole box */
-    margin: auto;
-    max-width: 70vw;
+    margin: 10px auto;
+    width: 70vw;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* the parent element to which video is dependent on */
+    gap: 1rem;
+}
+
+.first-image {
     position: relative;
-    top: 7px;
-    /* this is because my separation line and this box were overlapping each other */
-    height: 405px;
 }
 
 .sec-image {
-    width: 30vw;
+    width: 421px;
     position: relative;
     z-index: 10;
+    max-width: 100%;
 }
 
 .sec-video {
-    top: 75px;
-    right: 0;
-    /* i want it to be dependent on its parent element */
+    top: 22%;
+    right: 13%;
     position: absolute;
-    height: 173px;
-    width: 410px;
+    width: 75%;
+    max-height: 100%;
+    max-width: 100%;
+    /* Earlier my code had this issue of horizontal scrollbar and so i could not figure why it was happening,searched net couldn't find anything but today this blog helped me i am so happy it worked out  */
+    /* the thing is my video was overflowing adding so much of extra width hence adding this one thing just solved the problem like it never existed */
+}
+
+.third .first-image .sec-video {
+    top: 10%;
+    right: 17%;
+    position: absolute;
+    width: 67%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .first-text {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.5rem;
+    padding: 1rem;
 }
 
 .sec-text-bold {
     font-weight: 900;
-    font-size: 40px;
+    font-size: 2rem;
 }
 
 .sec-text-normal {
-    font-size: 15px;
-}
-
-/* CHILD SELECTOR */
-section.third>div :nth-child(2) {
-    height: 146px;
+    font-size: 1rem;
 }
 
 /* FAQBOX */
 .FAQ {
     margin: 0px 0px 40px 0px;
-
 }
 
 .faq {
@@ -302,10 +310,8 @@ section.third>div :nth-child(2) {
 
 /* FOOTER */
 footer {
-    /* background-color: #1f1d1d; */
     width: 100vw;
     height: 300px;
-
 }
 
 .footer {
@@ -315,7 +321,6 @@ footer {
     color: white;
     max-width: 60vw;
     margin: auto;
-    gap: 30px;
 }
 
 .footer-item {
@@ -336,7 +341,49 @@ footer {
     padding: 34px 0px;
     margin: auto;
     font-size: 20px;
+    text-align: center;
 }
 
-/* GRID */
-/* How to decide when to use what units */
+/* media queries for different screen */
+@media screen and (max-width:1000px) {
+    .first {
+        flex-wrap: wrap;
+    }
+
+    .second {
+        gap: 1rem;
+    }
+
+    .third .first-text {
+        height: 10rem;
+    }
+
+    .first-text {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer {
+        gap: 50px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .faq {
+        padding: 0px 30px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .main-content-button {
+        flex-wrap: wrap;
+    }
+}
+
